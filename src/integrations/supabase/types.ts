@@ -14,7 +14,213 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      clientes: {
+        Row: {
+          ativo: boolean
+          cnpj_cpf: string
+          created_at: string
+          email: string | null
+          endereco: string | null
+          id: string
+          nome: string
+          telefone: string | null
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean
+          cnpj_cpf: string
+          created_at?: string
+          email?: string | null
+          endereco?: string | null
+          id?: string
+          nome: string
+          telefone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean
+          cnpj_cpf?: string
+          created_at?: string
+          email?: string | null
+          endereco?: string | null
+          id?: string
+          nome?: string
+          telefone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      funcionarios: {
+        Row: {
+          ativo: boolean
+          cargo: string
+          cpf: string
+          created_at: string
+          data_admissao: string
+          id: string
+          nome: string
+          observacoes: string | null
+          salario_bruto: number
+          telefone: string | null
+          updated_at: string
+        }
+        Insert: {
+          ativo?: boolean
+          cargo: string
+          cpf: string
+          created_at?: string
+          data_admissao: string
+          id?: string
+          nome: string
+          observacoes?: string | null
+          salario_bruto: number
+          telefone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          ativo?: boolean
+          cargo?: string
+          cpf?: string
+          created_at?: string
+          data_admissao?: string
+          id?: string
+          nome?: string
+          observacoes?: string | null
+          salario_bruto?: number
+          telefone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      pagamentos: {
+        Row: {
+          ano: number
+          created_at: string
+          data_pagamento: string
+          funcionario_id: string
+          id: string
+          mes: number
+          salario_bruto: number
+          salario_liquido: number
+          total_vales: number
+        }
+        Insert: {
+          ano: number
+          created_at?: string
+          data_pagamento: string
+          funcionario_id: string
+          id?: string
+          mes: number
+          salario_bruto: number
+          salario_liquido: number
+          total_vales?: number
+        }
+        Update: {
+          ano?: number
+          created_at?: string
+          data_pagamento?: string
+          funcionario_id?: string
+          id?: string
+          mes?: number
+          salario_bruto?: number
+          salario_liquido?: number
+          total_vales?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pagamentos_funcionario_id_fkey"
+            columns: ["funcionario_id"]
+            isOneToOne: false
+            referencedRelation: "funcionarios"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      recebiveis: {
+        Row: {
+          cliente_id: string
+          created_at: string
+          data_emissao: string
+          data_vencimento: string
+          descricao: string
+          id: string
+          status: string
+          updated_at: string
+          valor: number
+        }
+        Insert: {
+          cliente_id: string
+          created_at?: string
+          data_emissao: string
+          data_vencimento: string
+          descricao: string
+          id?: string
+          status?: string
+          updated_at?: string
+          valor: number
+        }
+        Update: {
+          cliente_id?: string
+          created_at?: string
+          data_emissao?: string
+          data_vencimento?: string
+          descricao?: string
+          id?: string
+          status?: string
+          updated_at?: string
+          valor?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "recebiveis_cliente_id_fkey"
+            columns: ["cliente_id"]
+            isOneToOne: false
+            referencedRelation: "clientes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      vales: {
+        Row: {
+          created_at: string
+          data: string
+          descontado: boolean
+          funcionario_id: string
+          id: string
+          motivo: string | null
+          updated_at: string
+          valor: number
+        }
+        Insert: {
+          created_at?: string
+          data: string
+          descontado?: boolean
+          funcionario_id: string
+          id?: string
+          motivo?: string | null
+          updated_at?: string
+          valor: number
+        }
+        Update: {
+          created_at?: string
+          data?: string
+          descontado?: boolean
+          funcionario_id?: string
+          id?: string
+          motivo?: string | null
+          updated_at?: string
+          valor?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "vales_funcionario_id_fkey"
+            columns: ["funcionario_id"]
+            isOneToOne: false
+            referencedRelation: "funcionarios"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
