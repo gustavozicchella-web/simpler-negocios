@@ -91,9 +91,10 @@ export default function Dashboard() {
 
 
   return (
-    <div className="space-y-6 animate-fade-in min-h-full rounded-lg p-6 bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: "url('/images/bg-controle-financeiro.jpg')" }}>
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-lg" />
-      <div className="relative z-10 space-y-6">
+    <div className="space-y-6 animate-fade-in min-h-full rounded-xl relative overflow-hidden">
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/bg-controle-financeiro.jpg')" }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/75 to-background/90 backdrop-blur-[2px]" />
+      <div className="relative z-10 space-y-6 p-6">
         <h1 className="text-2xl font-bold">📊ControleFinanceiro.C.A.V </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
