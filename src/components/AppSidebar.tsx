@@ -24,7 +24,7 @@ import {
 "@/components/ui/sidebar";
 
 const items = [
-{ title: "Dashboard", url: "/", icon: LayoutDashboard, emoji: "📊" },
+{ title: "C.A.V", url: "/", icon: LayoutDashboard, emoji: "📊" },
 { title: "Funcionários", url: "/funcionarios", icon: Users, emoji: "👥" },
 { title: "Clientes", url: "/clientes", icon: Building2, emoji: "🏢" },
 { title: "Recebíveis", url: "/recebiveis", icon: DollarSign, emoji: "💰" },
