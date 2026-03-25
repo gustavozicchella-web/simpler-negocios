@@ -58,9 +58,10 @@ export default function Recebiveis() {
     }
   }
 
-  async function marcarPago(id: string) {
-    await supabase.from("recebiveis").update({ status: "Pago" }).eq("id", id);
-    toast.success("Recebível marcado como pago!");
+  async function toggleStatus(id: string, statusAtual: string) {
+    const novoStatus = statusAtual === "Pago" ? "Pendente" : "Pago";
+    await supabase.from("recebiveis").update({ status: novoStatus }).eq("id", id);
+    toast.success(`Status alterado para ${novoStatus}!`);
     load();
   }
 
@@ -133,11 +134,9 @@ export default function Recebiveis() {
                       </Badge>
                     </TableCell>
                     <TableCell>
-                      {r.status === "Pendente" && (
-                        <Button variant="ghost" size="icon" onClick={() => marcarPago(r.id)} title="Marcar como pago">
-                          <Check className="w-4 h-4 text-success" />
-                        </Button>
-                      )}
+                      <Button variant="ghost" size="icon" onClick={() => toggleStatus(r.id, r.status)} title={r.status === "Pago" ? "Marcar como pendente" : "Marcar como pago"}>
+                        <Check className={`w-4 h-4 ${r.status === "Pago" ? "text-muted-foreground" : "text-green-500"}`} />
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
