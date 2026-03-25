@@ -134,11 +134,9 @@ export default function Recebiveis() {
                       </Badge>
                     </TableCell>
                     <TableCell>
-                      {r.status === "Pendente" && (
-                        <Button variant="ghost" size="icon" onClick={() => marcarPago(r.id)} title="Marcar como pago">
-                          <Check className="w-4 h-4 text-success" />
-                        </Button>
-                      )}
+                      <Button variant="ghost" size="icon" onClick={() => toggleStatus(r.id, r.status)} title={r.status === "Pago" ? "Marcar como pendente" : "Marcar como pago"}>
+                        <Check className={`w-4 h-4 ${r.status === "Pago" ? "text-muted-foreground" : "text-green-500"}`} />
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
