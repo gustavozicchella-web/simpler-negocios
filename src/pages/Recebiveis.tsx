@@ -58,9 +58,10 @@ export default function Recebiveis() {
     }
   }
 
-  async function marcarPago(id: string) {
-    await supabase.from("recebiveis").update({ status: "Pago" }).eq("id", id);
-    toast.success("Recebível marcado como pago!");
+  async function toggleStatus(id: string, statusAtual: string) {
+    const novoStatus = statusAtual === "Pago" ? "Pendente" : "Pago";
+    await supabase.from("recebiveis").update({ status: novoStatus }).eq("id", id);
+    toast.success(`Status alterado para ${novoStatus}!`);
     load();
   }
 
