@@ -60,6 +60,8 @@ export type Database = {
           id: string
           nome: string
           observacoes: string | null
+          pix: string | null
+          rg: string | null
           salario_bruto: number
           telefone: string | null
           updated_at: string
@@ -73,6 +75,8 @@ export type Database = {
           id?: string
           nome: string
           observacoes?: string | null
+          pix?: string | null
+          rg?: string | null
           salario_bruto: number
           telefone?: string | null
           updated_at?: string
@@ -86,6 +90,8 @@ export type Database = {
           id?: string
           nome?: string
           observacoes?: string | null
+          pix?: string | null
+          rg?: string | null
           salario_bruto?: number
           telefone?: string | null
           updated_at?: string
