@@ -73,7 +73,7 @@ export default function Clientes() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">🏢 Clientes</h1>
+        <h1 className="text-2xl font-bold text-primary-foreground">🏢 Clientes</h1>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={() => downloadCSV(clientes.map(c => ({ Nome: c.nome, "CNPJ/CPF": formatCpfCnpj(c.cnpj_cpf), Endereço: c.endereco ?? "", Telefone: c.telefone ?? "", Email: c.email ?? "" })), "clientes.csv")}>
             <Download className="w-4 h-4 mr-1" /> CSV
