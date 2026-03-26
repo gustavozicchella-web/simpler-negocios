@@ -56,7 +56,7 @@ export default function FolhaPagamento() {
     setJaProcessada(false);
 
     // Calculate preview
-    const { data: funcs } = await supabase.from("funcionarios").select("id, nome, salario_bruto").eq("ativo", true).order("nome");
+    const { data: funcs } = await supabase.from("funcionarios").select("id, nome, salario_bruto, valor_hora, horas_trabalhadas").eq("ativo", true).order("nome");
     if (!funcs || funcs.length === 0) { setFolha([]); return; }
 
     const { data: valesPend } = await supabase.from("vales").select("funcionario_id, valor").eq("descontado", false);
@@ -65,7 +65,8 @@ export default function FolhaPagamento() {
 
     setFolha(funcs.map((f) => {
       const tv = vMap.get(f.id) ?? 0;
-      return { id: f.id, nome: f.nome, salario_bruto: f.salario_bruto, total_vales: tv, salario_liquido: Math.max(f.salario_bruto - tv, 0) };
+      const salBruto = (f as any).valor_hora * (f as any).horas_trabalhadas;
+      return { id: f.id, nome: f.nome, salario_bruto: salBruto, total_vales: tv, salario_liquido: Math.max(salBruto - tv, 0) };
     }));
   }
 
