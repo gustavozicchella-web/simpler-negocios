@@ -81,7 +81,7 @@ export default function Relatorios() {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <h1 className="text-2xl font-bold">📈 Relatórios</h1>
+      <h1 className="text-2xl font-bold text-primary-foreground">📈 Relatórios</h1>
 
       <div className="flex gap-4 items-end">
         <div className="grid gap-2 flex-1">
