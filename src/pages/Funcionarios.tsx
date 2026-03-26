@@ -255,15 +255,25 @@ export default function Funcionarios() {
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="grid gap-2">
-                <Label>Salário Bruto (R$)</Label>
-                <Input type="number" min="0" step="100" value={salario} onChange={(e) => setSalario(e.target.value)} />
+                <Label>Valor da Hora (R$)</Label>
+                <Input type="number" min="0" step="0.50" value={valorHora} onChange={(e) => setValorHora(e.target.value)} />
               </div>
               <div className="grid gap-2">
-                <Label>PIX</Label>
-                <Input value={pix} onChange={(e) => setPix(e.target.value)} placeholder="CPF, e-mail, telefone ou chave" />
+                <Label>Horas Trabalhadas</Label>
+                <Input type="number" min="0" step="1" value={horasTrabalhadas} onChange={(e) => setHorasTrabalhadas(e.target.value)} />
               </div>
+              <div className="grid gap-2">
+                <Label>Total</Label>
+                <div className="h-10 flex items-center px-3 rounded-md border bg-muted text-sm font-bold">
+                  {formatCurrency((parseFloat(valorHora) || 0) * (parseFloat(horasTrabalhadas) || 0))}
+                </div>
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label>PIX</Label>
+              <Input value={pix} onChange={(e) => setPix(e.target.value)} placeholder="CPF, e-mail, telefone ou chave" />
             </div>
             <div className="grid gap-2">
               <Label>Telefone</Label>
