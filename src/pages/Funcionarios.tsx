@@ -33,7 +33,8 @@ export default function Funcionarios() {
   const [cpf, setCpf] = useState("");
   const [rg, setRg] = useState("");
   const [pix, setPix] = useState("");
-  const [salario, setSalario] = useState("");
+  const [valorHora, setValorHora] = useState("");
+  const [horasTrabalhadas, setHorasTrabalhadas] = useState("");
   const [telefone, setTelefone] = useState("");
   const [obs, setObs] = useState("");
 
