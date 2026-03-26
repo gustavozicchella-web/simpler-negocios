@@ -13,7 +13,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               Sistema de Gestão Empresarial
             </h2>
           </header>
-          <main className="flex-1 overflow-auto p-6 bg-[#edf7f7]">
+          <main className="flex-1 overflow-auto p-6 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/images/bg-controle.jpg')" }}>
             {children}
           </main>
         </div>
