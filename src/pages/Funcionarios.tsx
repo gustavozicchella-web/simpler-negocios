@@ -64,7 +64,7 @@ export default function Funcionarios() {
 
   function resetForm() {
     setNome(""); setCpf(""); setRg(""); setPix("");
-    setSalario(""); setTelefone(""); setObs("");
+    setValorHora(""); setHorasTrabalhadas(""); setTelefone(""); setObs("");
     setEditItem(null);
   }
 
