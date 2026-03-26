@@ -123,7 +123,7 @@ export default function Relatorios() {
       )}
 
       {data.length === 0 && !loading && (
-        <p className="text-muted-foreground text-sm text-center py-8">Selecione um relatório e clique em "Gerar".</p>
+        <p className="text-sm text-center py-8 text-primary-foreground">Selecione um relatório e clique em "Gerar".</p>
       )}
     </div>
   );
