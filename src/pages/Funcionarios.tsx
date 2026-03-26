@@ -74,7 +74,8 @@ export default function Funcionarios() {
     setCpf(maskCPF(f.cpf));
     setRg(f.rg ? maskRG(f.rg) : "");
     setPix(f.pix ?? "");
-    setSalario(String(f.salario_bruto));
+    setValorHora(String(f.valor_hora));
+    setHorasTrabalhadas(String(f.horas_trabalhadas));
     setTelefone(f.telefone ?? "");
     setObs(f.observacoes ?? "");
     setDialogOpen(true);
