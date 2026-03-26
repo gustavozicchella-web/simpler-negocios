@@ -100,20 +100,15 @@ export default function FolhaPagamento() {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <h1 className="text-2xl font-bold">💼 Folha de Pagamento</h1>
+      <h1 className="text-2xl font-bold text-primary-foreground">💼 Folha de Pagamento</h1>
 
       <div className="flex gap-4 items-end">
         <div className="grid gap-2">
-          <label className="text-sm font-medium">Mês</label>
-          <Select value={mes} onValueChange={setMes}>
-            <SelectTrigger className="w-[160px]"><SelectValue /></SelectTrigger>
-            <SelectContent>
-              {MESES.map((m, i) => <SelectItem key={i} value={String(i + 1)}>{m}</SelectItem>)}
-            </SelectContent>
-          </Select>
+          <label className="text-sm font-medium text-primary-foreground">Mês</label>
+...
         </div>
         <div className="grid gap-2">
-          <label className="text-sm font-medium">Ano</label>
+          <label className="text-sm font-medium text-primary-foreground">Ano</label>
           <Select value={ano} onValueChange={setAno}>
             <SelectTrigger className="w-[120px]"><SelectValue /></SelectTrigger>
             <SelectContent>
