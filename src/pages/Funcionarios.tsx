@@ -204,7 +204,9 @@ export default function Funcionarios() {
                     <TableCell className="font-mono text-sm">{formatCPF(f.cpf)}</TableCell>
                     <TableCell className="font-mono text-sm">{f.rg ? formatRG(f.rg) : "—"}</TableCell>
                     <TableCell>{f.pix ?? "—"}</TableCell>
-                    <TableCell>{formatCurrency(f.salario_bruto)}</TableCell>
+                    <TableCell>{formatCurrency(f.valor_hora)}</TableCell>
+                    <TableCell>{f.horas_trabalhadas}</TableCell>
+                    <TableCell className="font-bold">{formatCurrency(f.valor_hora * f.horas_trabalhadas)}</TableCell>
                     <TableCell>{formatCurrency(f.vales_pendentes ?? 0)}</TableCell>
                     <TableCell>{f.telefone ?? "—"}</TableCell>
                     <TableCell>
