@@ -85,7 +85,7 @@ export default function Relatorios() {
 
       <div className="flex gap-4 items-end">
         <div className="grid gap-2 flex-1">
-          <label className="text-sm font-medium">Tipo de Relatório</label>
+          <label className="text-sm font-medium text-primary-foreground">Tipo de Relatório</label>
           <Select value={tipo} onValueChange={setTipo}>
             <SelectTrigger><SelectValue /></SelectTrigger>
             <SelectContent>
