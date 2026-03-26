@@ -94,9 +94,14 @@ export default function Funcionarios() {
       toast.error("CPF deve conter 11 dígitos.");
       return;
     }
-    const sal = parseFloat(salario);
-    if (isNaN(sal) || sal < 0) {
-      toast.error("Salário inválido.");
+    const vh = parseFloat(valorHora);
+    const ht = parseFloat(horasTrabalhadas);
+    if (isNaN(vh) || vh < 0) {
+      toast.error("Valor da hora inválido.");
+      return;
+    }
+    if (isNaN(ht) || ht < 0) {
+      toast.error("Horas trabalhadas inválido.");
       return;
     }
 
@@ -106,7 +111,9 @@ export default function Funcionarios() {
       rg: rgLimpo || null,
       pix: pix || null,
       cargo: "N/A",
-      salario_bruto: sal,
+      valor_hora: vh,
+      horas_trabalhadas: ht,
+      salario_bruto: vh * ht,
       data_admissao: new Date().toISOString().slice(0, 10),
       telefone: telefone || null,
       observacoes: obs || null,
