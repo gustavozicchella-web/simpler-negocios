@@ -189,7 +189,9 @@ export default function Funcionarios() {
                   <TableHead>CPF</TableHead>
                   <TableHead>RG</TableHead>
                   <TableHead>PIX</TableHead>
-                  <TableHead>Salário Bruto</TableHead>
+                  <TableHead>Valor Hora</TableHead>
+                  <TableHead>Horas Trab.</TableHead>
+                  <TableHead>Total</TableHead>
                   <TableHead>Vales Pend.</TableHead>
                   <TableHead>Telefone</TableHead>
                   <TableHead className="w-24">Ações</TableHead>
