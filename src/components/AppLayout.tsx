@@ -13,8 +13,11 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               Sistema de Gestão Empresarial
             </h2>
           </header>
-          <main className="flex-1 overflow-auto p-6 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/images/bg-controle.jpg')" }}>
-            {children}
+          <main className="flex-1 overflow-auto p-6 relative bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: "url('/images/bg-controle.jpg')" }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 backdrop-blur-[2px] pointer-events-none" />
+            <div className="relative z-10">
+              {children}
+            </div>
           </main>
         </div>
       </div>
