@@ -84,7 +84,7 @@ export default function Recebiveis() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">💰 Recebíveis</h1>
+        <h1 className="text-2xl font-bold text-primary-foreground">💰 Recebíveis</h1>
         <div className="flex gap-2">
           <Select value={filtro} onValueChange={setFiltro}>
             <SelectTrigger className="w-[140px]"><SelectValue /></SelectTrigger>
