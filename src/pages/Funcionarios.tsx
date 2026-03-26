@@ -17,7 +17,8 @@ type Funcionario = {
   cpf: string;
   rg: string | null;
   pix: string | null;
-  salario_bruto: number;
+  valor_hora: number;
+  horas_trabalhadas: number;
   telefone: string | null;
   observacoes: string | null;
   vales_pendentes?: number;
@@ -32,7 +33,8 @@ export default function Funcionarios() {
   const [cpf, setCpf] = useState("");
   const [rg, setRg] = useState("");
   const [pix, setPix] = useState("");
-  const [salario, setSalario] = useState("");
+  const [valorHora, setValorHora] = useState("");
+  const [horasTrabalhadas, setHorasTrabalhadas] = useState("");
   const [telefone, setTelefone] = useState("");
   const [obs, setObs] = useState("");
 
@@ -62,7 +64,7 @@ export default function Funcionarios() {
 
   function resetForm() {
     setNome(""); setCpf(""); setRg(""); setPix("");
-    setSalario(""); setTelefone(""); setObs("");
+    setValorHora(""); setHorasTrabalhadas(""); setTelefone(""); setObs("");
     setEditItem(null);
   }
 
@@ -72,7 +74,8 @@ export default function Funcionarios() {
     setCpf(maskCPF(f.cpf));
     setRg(f.rg ? maskRG(f.rg) : "");
     setPix(f.pix ?? "");
-    setSalario(String(f.salario_bruto));
+    setValorHora(String(f.valor_hora));
+    setHorasTrabalhadas(String(f.horas_trabalhadas));
     setTelefone(f.telefone ?? "");
     setObs(f.observacoes ?? "");
     setDialogOpen(true);
@@ -91,9 +94,14 @@ export default function Funcionarios() {
       toast.error("CPF deve conter 11 dígitos.");
       return;
     }
-    const sal = parseFloat(salario);
-    if (isNaN(sal) || sal < 0) {
-      toast.error("Salário inválido.");
+    const vh = parseFloat(valorHora);
+    const ht = parseFloat(horasTrabalhadas);
+    if (isNaN(vh) || vh < 0) {
+      toast.error("Valor da hora inválido.");
+      return;
+    }
+    if (isNaN(ht) || ht < 0) {
+      toast.error("Horas trabalhadas inválido.");
       return;
     }
 
@@ -103,7 +111,9 @@ export default function Funcionarios() {
       rg: rgLimpo || null,
       pix: pix || null,
       cargo: "N/A",
-      salario_bruto: sal,
+      valor_hora: vh,
+      horas_trabalhadas: ht,
+      salario_bruto: vh * ht,
       data_admissao: new Date().toISOString().slice(0, 10),
       telefone: telefone || null,
       observacoes: obs || null,
@@ -143,7 +153,9 @@ export default function Funcionarios() {
         CPF: formatCPF(f.cpf),
         RG: f.rg ? formatRG(f.rg) : "",
         PIX: f.pix ?? "",
-        "Salário Bruto": formatCurrency(f.salario_bruto),
+        "Valor Hora": formatCurrency(f.valor_hora),
+        "Horas Trab.": f.horas_trabalhadas,
+        "Total": formatCurrency(f.valor_hora * f.horas_trabalhadas),
         "Vales Pendentes": formatCurrency(f.vales_pendentes ?? 0),
         Telefone: f.telefone ?? "",
       })),
@@ -177,7 +189,9 @@ export default function Funcionarios() {
                   <TableHead>CPF</TableHead>
                   <TableHead>RG</TableHead>
                   <TableHead>PIX</TableHead>
-                  <TableHead>Salário Bruto</TableHead>
+                  <TableHead>Valor Hora</TableHead>
+                  <TableHead>Horas Trab.</TableHead>
+                  <TableHead>Total</TableHead>
                   <TableHead>Vales Pend.</TableHead>
                   <TableHead>Telefone</TableHead>
                   <TableHead className="w-24">Ações</TableHead>
@@ -190,7 +204,9 @@ export default function Funcionarios() {
                     <TableCell className="font-mono text-sm">{formatCPF(f.cpf)}</TableCell>
                     <TableCell className="font-mono text-sm">{f.rg ? formatRG(f.rg) : "—"}</TableCell>
                     <TableCell>{f.pix ?? "—"}</TableCell>
-                    <TableCell>{formatCurrency(f.salario_bruto)}</TableCell>
+                    <TableCell>{formatCurrency(f.valor_hora)}</TableCell>
+                    <TableCell>{f.horas_trabalhadas}</TableCell>
+                    <TableCell className="font-bold">{formatCurrency(f.valor_hora * f.horas_trabalhadas)}</TableCell>
                     <TableCell>{formatCurrency(f.vales_pendentes ?? 0)}</TableCell>
                     <TableCell>{f.telefone ?? "—"}</TableCell>
                     <TableCell>
@@ -239,15 +255,25 @@ export default function Funcionarios() {
                 />
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="grid gap-2">
-                <Label>Salário Bruto (R$)</Label>
-                <Input type="number" min="0" step="100" value={salario} onChange={(e) => setSalario(e.target.value)} />
+                <Label>Valor da Hora (R$)</Label>
+                <Input type="number" min="0" step="0.50" value={valorHora} onChange={(e) => setValorHora(e.target.value)} />
               </div>
               <div className="grid gap-2">
-                <Label>PIX</Label>
-                <Input value={pix} onChange={(e) => setPix(e.target.value)} placeholder="CPF, e-mail, telefone ou chave" />
+                <Label>Horas Trabalhadas</Label>
+                <Input type="number" min="0" step="1" value={horasTrabalhadas} onChange={(e) => setHorasTrabalhadas(e.target.value)} />
               </div>
+              <div className="grid gap-2">
+                <Label>Total</Label>
+                <div className="h-10 flex items-center px-3 rounded-md border bg-muted text-sm font-bold">
+                  {formatCurrency((parseFloat(valorHora) || 0) * (parseFloat(horasTrabalhadas) || 0))}
+                </div>
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label>PIX</Label>
+              <Input value={pix} onChange={(e) => setPix(e.target.value)} placeholder="CPF, e-mail, telefone ou chave" />
             </div>
             <div className="grid gap-2">
               <Label>Telefone</Label>

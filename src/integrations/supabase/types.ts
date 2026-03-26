@@ -57,6 +57,7 @@ export type Database = {
           cpf: string
           created_at: string
           data_admissao: string
+          horas_trabalhadas: number
           id: string
           nome: string
           observacoes: string | null
@@ -65,6 +66,7 @@ export type Database = {
           salario_bruto: number
           telefone: string | null
           updated_at: string
+          valor_hora: number
         }
         Insert: {
           ativo?: boolean
@@ -72,6 +74,7 @@ export type Database = {
           cpf: string
           created_at?: string
           data_admissao: string
+          horas_trabalhadas?: number
           id?: string
           nome: string
           observacoes?: string | null
@@ -80,6 +83,7 @@ export type Database = {
           salario_bruto: number
           telefone?: string | null
           updated_at?: string
+          valor_hora?: number
         }
         Update: {
           ativo?: boolean
@@ -87,6 +91,7 @@ export type Database = {
           cpf?: string
           created_at?: string
           data_admissao?: string
+          horas_trabalhadas?: number
           id?: string
           nome?: string
           observacoes?: string | null
@@ -95,6 +100,7 @@ export type Database = {
           salario_bruto?: number
           telefone?: string | null
           updated_at?: string
+          valor_hora?: number
         }
         Relationships: []
       }
