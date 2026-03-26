@@ -166,7 +166,7 @@ export default function Funcionarios() {
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">👥 Funcionários</h1>
+        <h1 className="text-2xl font-bold text-primary-foreground">👥 Funcionários</h1>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" onClick={exportCSV}>
             <Download className="w-4 h-4 mr-1" /> CSV
