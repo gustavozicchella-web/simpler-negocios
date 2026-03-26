@@ -17,7 +17,8 @@ type Funcionario = {
   cpf: string;
   rg: string | null;
   pix: string | null;
-  salario_bruto: number;
+  valor_hora: number;
+  horas_trabalhadas: number;
   telefone: string | null;
   observacoes: string | null;
   vales_pendentes?: number;
