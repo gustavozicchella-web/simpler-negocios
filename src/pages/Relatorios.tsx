@@ -81,11 +81,11 @@ export default function Relatorios() {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <h1 className="text-2xl font-bold">📈 Relatórios</h1>
+      <h1 className="text-2xl font-bold text-primary-foreground">📈 Relatórios</h1>
 
       <div className="flex gap-4 items-end">
         <div className="grid gap-2 flex-1">
-          <label className="text-sm font-medium">Tipo de Relatório</label>
+          <label className="text-sm font-medium text-primary-foreground">Tipo de Relatório</label>
           <Select value={tipo} onValueChange={setTipo}>
             <SelectTrigger><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -123,7 +123,7 @@ export default function Relatorios() {
       )}
 
       {data.length === 0 && !loading && (
-        <p className="text-muted-foreground text-sm text-center py-8">Selecione um relatório e clique em "Gerar".</p>
+        <p className="text-sm text-center py-8 text-primary-foreground">Selecione um relatório e clique em "Gerar".</p>
       )}
     </div>
   );
