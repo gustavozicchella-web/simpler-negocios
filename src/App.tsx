@@ -11,6 +11,7 @@ import Recebiveis from "./pages/Recebiveis";
 import Vales from "./pages/Vales";
 import FolhaPagamento from "./pages/FolhaPagamento";
 import Relatorios from "./pages/Relatorios";
+import ContasPagar from "./pages/ContasPagar";
 import AdminUsuarios from "./pages/AdminUsuarios";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -51,6 +52,7 @@ function ProtectedRoutes() {
         <Route path="/vales" element={<Vales />} />
         <Route path="/folha" element={<FolhaPagamento />} />
         <Route path="/relatorios" element={<Relatorios />} />
+        <Route path="/contas-pagar" element={<ContasPagar />} />
         {isAdmin && <Route path="/admin/usuarios" element={<AdminUsuarios />} />}
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -8,6 +8,7 @@ import {
   BarChart3,
   Shield,
   LogOut,
+  CreditCard,
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/contexts/AuthContext";
@@ -34,6 +35,7 @@ const items = [
   { title: "Vales", url: "/vales", icon: FileText, emoji: "📋" },
   { title: "Folha de Pagamento", url: "/folha", icon: Briefcase, emoji: "💼" },
   { title: "Relatórios", url: "/relatorios", icon: BarChart3, emoji: "📈" },
+  { title: "Contas a Pagar", url: "/contas-pagar", icon: CreditCard, emoji: "💳" },
 ];
 
 export function AppSidebar() {
