@@ -50,6 +50,48 @@ export type Database = {
         }
         Relationships: []
       }
+      contas_pagar: {
+        Row: {
+          categoria: string
+          created_at: string
+          data_vencimento: string
+          descricao: string
+          id: string
+          observacoes: string | null
+          pago_em: string | null
+          recorrencia: string
+          status: string
+          updated_at: string
+          valor: number
+        }
+        Insert: {
+          categoria?: string
+          created_at?: string
+          data_vencimento: string
+          descricao: string
+          id?: string
+          observacoes?: string | null
+          pago_em?: string | null
+          recorrencia?: string
+          status?: string
+          updated_at?: string
+          valor: number
+        }
+        Update: {
+          categoria?: string
+          created_at?: string
+          data_vencimento?: string
+          descricao?: string
+          id?: string
+          observacoes?: string | null
+          pago_em?: string | null
+          recorrencia?: string
+          status?: string
+          updated_at?: string
+          valor?: number
+        }
+        Relationships: []
+      }
       funcionarios: {
         Row: {
           ativo: boolean
