@@ -52,6 +52,7 @@ function ProtectedRoutes() {
         <Route path="/vales" element={<Vales />} />
         <Route path="/folha" element={<FolhaPagamento />} />
         <Route path="/relatorios" element={<Relatorios />} />
+        <Route path="/contas-pagar" element={<ContasPagar />} />
         {isAdmin && <Route path="/admin/usuarios" element={<AdminUsuarios />} />}
         <Route path="*" element={<NotFound />} />
       </Routes>
