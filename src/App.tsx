@@ -11,6 +11,7 @@ import Recebiveis from "./pages/Recebiveis";
 import Vales from "./pages/Vales";
 import FolhaPagamento from "./pages/FolhaPagamento";
 import Relatorios from "./pages/Relatorios";
+import ContasPagar from "./pages/ContasPagar";
 import AdminUsuarios from "./pages/AdminUsuarios";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
