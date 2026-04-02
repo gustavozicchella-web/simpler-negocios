@@ -14,6 +14,9 @@ const TIPOS = [
   "Recebíveis Pagos",
   "Vales Pendentes",
   "Histórico de Pagamentos",
+  "Contas a Pagar - Pendentes",
+  "Contas a Pagar - Pagas",
+  "Contas a Pagar - Atrasadas",
 ];
 
 export default function Relatorios() {
