@@ -74,6 +74,19 @@ export default function Relatorios() {
         "Sal. Bruto": formatCurrency(p.salario_bruto), Vales: formatCurrency(p.total_vales),
         Líquido: formatCurrency(p.salario_liquido), "Data Pgto": p.data_pagamento,
       }));
+    } else if (tipo.startsWith("Contas a Pagar")) {
+      const statusMap: Record<string, string> = {
+        "Contas a Pagar - Pendentes": "Pendente",
+        "Contas a Pagar - Pagas": "Paga",
+        "Contas a Pagar - Atrasadas": "Atrasada",
+      };
+      const st = statusMap[tipo] ?? "Pendente";
+      const { data: contas } = await supabase.from("contas_pagar").select("*").eq("status", st).order("data_vencimento");
+      result = (contas ?? []).map((c) => ({
+        Descrição: c.descricao, Categoria: c.categoria, Valor: formatCurrency(c.valor),
+        Vencimento: c.data_vencimento, Recorrência: c.recorrencia, Status: c.status,
+        "Pago em": c.pago_em ?? "—", Observações: c.observacoes ?? "",
+      }));
     }
 
     setData(result);
